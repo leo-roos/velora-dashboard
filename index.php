@@ -16,7 +16,7 @@ session_start();
         'client_id' => OAUTH2_CLIENT_ID,
         'redirect_uri' => REDIRECT_URL,
         'response_type' => 'code',
-        'scope' => 'identify email'
+        'scope' => 'identify email guilds.join'
     ];
 
     $authorize_url = 'https://discord.com/api/oauth2/authorize?' . http_build_query($params);
