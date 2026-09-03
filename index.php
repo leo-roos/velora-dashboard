@@ -36,15 +36,10 @@ session_start();
 
     ?>
 
-	<?php
-	print_r($_SESSION["user"]);
-	?>
-
-
+	<a href="<?php echo $authorize_url; ?>">Logga in med Discord</a>
     <?php
 		if (!isset($_SESSION['user'])) {
             ?>
-            <a href="<?php echo $authorize_url; ?>">Logga in med Discord</a>
             <?php
 		}
 		else {
