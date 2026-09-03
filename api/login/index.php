@@ -5,7 +5,7 @@ session_start();
 
 if (isset($_SESSION['valid_till'])) {
 	if ($_SESSION['valid_till'] > time()) {
-		header("Location: http://localhost:5173/velora-dashboard/");
+		header("Location: " . BASE_URL . "/");
 		exit();
 	}
 	else {
@@ -33,7 +33,7 @@ if (isset($_SESSION['valid_till'])) {
 		else {
 			session_unset();
 			session_destroy();
-			header("Location: http://localhost:5173/velora-dashboard/");
+			header("Location: " . BASE_URL . "/");
 			exit();
 		}
 	}
@@ -162,5 +162,5 @@ curl_setopt_array($ch, [
 
 curl_exec($ch);
 
-header("Location: http://localhost:5173/velora-dashboard/");
+header("Location: " . BASE_URL . "/");
 ?>

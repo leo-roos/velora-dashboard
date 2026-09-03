@@ -1,8 +1,11 @@
 <?php
     define('OAUTH2_CLIENT_ID', '');
     define('OAUTH2_CLIENT_SECRET', '');
-    define('REDIRECT_URL', 'http://localhost:5173/velora-dashboard/login/callback.php');
+    define('REDIRECT_URL', 'http://localhost:5173/velora-dashboard/api/login');
 
     define('BOT_TOKEN', '');
     define('DISCORD_GUILD_ID', '');
+
+    define('BASE_URL', 'http://localhost:5173/velora-dashboard');
+    define('API_BASE_URL', 'http://localhost:5173/velora-dashboard/api');
 ?>
