@@ -8,29 +8,45 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 
-
 <?php
 include __DIR__ . "/includes/header.php";
 ?>
 
-<a href="<?php echo "" . BASE_URL . "/logout" ?>">Logout</a>
-
-<h2> User Details :</h2>
-<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discriminator']; ?></p>
-<p> ID : <?php echo $_SESSION['user_id']; ?></p>
-<?php
-	if (isset($_SESSION['email'])) {
-		echo '<p> Email: ' . $_SESSION['email'] . '</p>';
-	}
-?>
-
-<p> Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
-																	echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p>
-<br>
-<h2>User Response :</h2>
-<div class="response-block">
-	<p><?php echo json_encode($_SESSION['user']); ?></p>
+<div class="sidebar">
+	<div class="server-info">
+		<div class="logo">
+			<img src="<?php echo BASE_URL . "/assets/images/logo.png" ?>" alt="logo">
+		</div>
+		<div class="name">
+			Velora Dashboard
+		</div>
+	</div>
+	<nav class="nagivation">
+		<div class="item">
+			<div class="icon"></div>
+			<div class="label">Dashboard</div>
+		</div>
+		<div class="item">
+			<div class="icon"></div>
+			<div class="label">Analytics</div>
+		</div>
+		<div class="item">
+			<div class="icon"></div>
+			<div class="label">Players</div>
+		</div>
+		<div class="item">
+			<div class="icon"></div>
+			<div class="label">Logbook</div>
+		</div>
+		<div class="item">
+			<div class="icon"></div>
+			<div class="label">Settings</div>
+		</div>
+	</nav>
 </div>
+<main class="dashboard">
+	
+</main>
 
 <?php
 include __DIR__ . "/includes/footer.php";
