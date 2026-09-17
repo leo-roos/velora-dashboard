@@ -103,64 +103,63 @@ $_SESSION['valid_till'] = time() + $results['expires_in'];
 
 
 // Add the user to the Discord server using the bot token
-$urlUser = "https://discord.com/api/v10/guilds/" . DISCORD_GUILD_ID . "/members/" . $_SESSION['user_id'];
-$data = [
-	'access_token' => $_SESSION['access_token']
-];
+// $urlUser = "https://discord.com/api/v10/guilds/" . DISCORD_GUILD_ID . "/members/" . $_SESSION['user_id'];
+// $data = [
+// 	'access_token' => $_SESSION['access_token']
+// ];
 
-$ch = curl_init($urlUser);
-curl_setopt_array($ch, [
-	CURLOPT_CUSTOMREQUEST  => 'PUT', 
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_POSTFIELDS     => json_encode($data),
-	CURLOPT_HTTPHEADER     => [
-		"Authorization: Bot " . BOT_TOKEN, // Det är boten som utför handlingen
-		"Content-Type: application/json"
-	]
-]);
+// $ch = curl_init($urlUser);
+// curl_setopt_array($ch, [
+// 	CURLOPT_CUSTOMREQUEST  => 'PUT', 
+// 	CURLOPT_RETURNTRANSFER => true,
+// 	CURLOPT_POSTFIELDS     => json_encode($data),
+// 	CURLOPT_HTTPHEADER     => [
+// 		"Authorization: Bot " . BOT_TOKEN, // Det är boten som utför handlingen
+// 		"Content-Type: application/json"
+// 	]
+// ]);
 
-$response = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+// $response = curl_exec($ch);
+// $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-if ($httpCode !== 201 && $httpCode !== 204) {
-	echo("Misslyckades att lägga till användare. HTTP-kod: $httpCode. Svar: " . $response);
-	exit();
-}
+// if ($httpCode !== 201 && $httpCode !== 204) {
+// 	echo("Misslyckades att lägga till användare. HTTP-kod: $httpCode. Svar: " . $response);
+// 	exit();
+// }
 
 
 // Open a DM channel with the user
-$ch = curl_init("https://discord.com/api/v10/users/@me/channels");
-curl_setopt_array($ch, [
-	CURLOPT_POST           => true,
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_POSTFIELDS     => json_encode(['recipient_id' => $_SESSION['user_id']]),
-	CURLOPT_HTTPHEADER     => [
-		"Authorization: Bot " . BOT_TOKEN,
-		"Content-Type: application/json"
-	]
-]);
+// $ch = curl_init("https://discord.com/api/v10/users/@me/channels");
+// curl_setopt_array($ch, [
+// 	CURLOPT_POST           => true,
+// 	CURLOPT_RETURNTRANSFER => true,
+// 	CURLOPT_POSTFIELDS     => json_encode(['recipient_id' => $_SESSION['user_id']]),
+// 	CURLOPT_HTTPHEADER     => [
+// 		"Authorization: Bot " . BOT_TOKEN,
+// 		"Content-Type: application/json"
+// 	]
+// ]);
 
-$response = json_decode(curl_exec($ch), true);
+// $response = json_decode(curl_exec($ch), true);
 
-if (!isset($response['id'])) {
-	echo ("Kunde inte öppna DM-kanal. Delar botten och användaren en server?");
-	exit();
-}
+// if (!isset($response['id'])) {
+// 	echo ("Kunde inte öppna DM-kanal. Delar botten och användaren en server?");
+// 	exit();
+// }
 
 // Send a message to the user in the DM channel
-$channelId = $response['id'];
-$ch = curl_init("https://discord.com/api/v10/channels/$channelId/messages");
-curl_setopt_array($ch, [
-	CURLOPT_POST           => true,
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_POSTFIELDS     => json_encode(['content' => "Detta är ett automatiskt meddelande från Velora Dashboard. Du har loggat in med Discord och har nu tillgång till dashboarden."]),
-	CURLOPT_HTTPHEADER     => [
-		"Authorization: Bot " . BOT_TOKEN,
-		"Content-Type: application/json"
-	]
-]);
-
-curl_exec($ch);
+// $channelId = $response['id'];
+// $ch = curl_init("https://discord.com/api/v10/channels/$channelId/messages");
+// curl_setopt_array($ch, [
+// 	CURLOPT_POST           => true,
+// 	CURLOPT_RETURNTRANSFER => true,
+// 	CURLOPT_POSTFIELDS     => json_encode(['content' => "Detta är ett automatiskt meddelande från Velora Dashboard. Du har loggat in med Discord och har nu tillgång till dashboarden."]),
+// 	CURLOPT_HTTPHEADER     => [
+// 		"Authorization: Bot " . BOT_TOKEN,
+// 		"Content-Type: application/json"
+// 	]
+// ]);
+// curl_exec($ch);
 
 header("Location: " . BASE_URL . "/");
 ?>
