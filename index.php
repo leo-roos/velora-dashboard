@@ -92,13 +92,13 @@ $serverData = [ // mock server data
 					if (isset($avatarUrl)) {
 						echo "<img src='{$avatarUrl}' alt=logo>";
 					} else {
-						echo '<div class="text">' . $_SESSION['user']['global_name'][0] . '</div>';
+						echo '<div class="text">' . htmlspecialchars($_SESSION['user']['global_name'][0]) . '</div>';
 					}
 				?>
 			</div>
 			<div class="name">
 				<?php
-					echo $_SESSION['user']['global_name'];
+					echo htmlspecialchars($_SESSION['user']['global_name']);
 				?>
 			</div>
 		</div>
