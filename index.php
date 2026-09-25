@@ -10,7 +10,7 @@ include __DIR__ . "/includes/header.php";
 
 $navigation = [
 	[
-		'title' => "Dashboard",
+		'title' => "Overview",
 		'url'   => "/",
 		'page' => "main.php",
 		'icon'  => "fa-light fa-table-columns",
