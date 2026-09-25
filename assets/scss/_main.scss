@@ -48,6 +48,7 @@ body {
         flex-direction: row;
         align-items: center;
         gap: 10px;
+        padding-bottom: 15px;
 
         .logo {
             display: flex;
@@ -163,6 +164,37 @@ body {
         .name {
             font-weight: 700;
         }
+    }
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .content, .header {
+        padding: 15px;
+    }
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        padding-bottom: 5px;
+        height: 50px;
+        border-bottom: 1px solid $border-color;
+        box-sizing: content-box;
+
+        .left {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            color: #ffffffba;
+        }
+    }
+    .content {
+        flex: 1;
     }
 }
 
