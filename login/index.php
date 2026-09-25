@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../config.php";
+require __DIR__ . "/../functions.php";
 
 session_start();
 ?>
@@ -8,7 +9,10 @@ session_start();
 include __DIR__ . "/../includes/header.php";
 ?>
 
-<a href="<?php echo $authorize_url; ?>">Logga in med Discord</a>
+<div class="login">
+    <a href="<?php echo $authorize_url; ?>">Logga in med Discord</a>
+    
+</div>
 
 <?php
 include __DIR__ . "/../includes/footer.php";
