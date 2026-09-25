@@ -17,7 +17,7 @@
         <div class="online">
             <i class="fa-solid fa-globe"></i>
             <div class="value">
-                <?php echo $serverData["online"] ?> / <?php echo $serverData["serverSlots"] ?>
+                <?php echo $serverData["online"]["all"] ?> / <?php echo $serverData["serverSlots"] ?>
             </div>
         </div>
     </div>

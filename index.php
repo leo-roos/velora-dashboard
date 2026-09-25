@@ -53,7 +53,10 @@ foreach ($navigation as $item) {
 
 $serverData = [ // mock server data
 	'serverSlots' => 64,
-	'online' => 10,
+	'online' => [
+		'all' => 10,
+		'staff' => 2,
+	],
 ]
 
 ?>
@@ -106,7 +109,7 @@ $serverData = [ // mock server data
 	<main class="dashboard">
 		<?php
 			include_once __DIR__ . '/includes/dashboard/header.php';
-			echo '<div class="content">';
+			echo '<div class="content ' . ($page['url'] == "/" ? "main" : $page['url']) . '">';
 			include_once __DIR__ . '/includes/dashboard/' . $page['page'];
 			echo '</div>';
 		?>
