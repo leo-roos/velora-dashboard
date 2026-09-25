@@ -158,6 +158,50 @@ body {
   font-weight: 700;
 }
 
+#error-404 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard .content.main .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.dashboard .content.main .hero .welcome {
+  font-weight: 700;
+  font-size: 18px;
+}
+.dashboard .content.main .hero .overview {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dashboard .content.main .hero .overview .stats {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.dashboard .content.main .hero .overview .stats .stat {
+  border: 1px solid rgba(255, 255, 255, 0.1254901961);
+  flex: 1;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dashboard .content.main .hero .overview .stats .stat .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -209,13 +253,6 @@ body {
 }
 .dashboard .content {
   flex: 1;
-}
-
-#error-404 {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }/*# sourceMappingURL=style.css.map */

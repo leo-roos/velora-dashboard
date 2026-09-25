@@ -1,0 +1,43 @@
+@use "../config" as *;
+
+.dashboard .content.main {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        
+        .welcome {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .overview {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .stats {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                .stat {
+                    border: 1px solid $border-color;
+                    flex: 1;
+                    border-radius: 5px;
+                    padding: 10px;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    .top {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
