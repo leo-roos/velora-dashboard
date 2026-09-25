@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velora Dashboard</title>
-    <link rel="stylesheet" href="<?php echo "" . BASE_URL . "/assets/style.css" ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/style.css?v=' . filemtime($_SERVER['DOCUMENT_ROOT'] . parse_url(BASE_URL, PHP_URL_PATH) . '/assets/style.css'); ?>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
