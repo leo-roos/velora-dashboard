@@ -42,11 +42,11 @@ $navigation = [
 ];
 
 $currentPage = $_GET['page'] ?? '/';
-$pageURL = 'main.php';
+$page = 'main.php';
 
 foreach ($navigation as $item) {
 	if ($item['url'] === $currentPage) {
-		$pageURL = $item['page'];
+		$page = $item;
 		break;
 	}
 }
@@ -93,7 +93,7 @@ foreach ($navigation as $item) {
 		<?php
 			include_once __DIR__ . '/includes/dashboard/header.php';
 			echo '<div class="content">';
-			include_once __DIR__ . '/includes/dashboard/' . $pageURL;
+			include_once __DIR__ . '/includes/dashboard/' . $page['page'];
 			echo '</div>';
 		?>
 	</main>
