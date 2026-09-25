@@ -80,12 +80,21 @@ $serverData = [ // mock server data
 
 		<div class="loggedin">
 			<div class="logo">
-				<!-- <img src="<?php echo BASE_URL . "/assets/images/logo.png" ?>" alt="logo"> -->
-				<div class="text">
-					<?php
-						echo $_SESSION['user']['global_name'][0];
-					?>
-				</div>
+				<?php
+					$avatarUrl = null;
+					$avatarHash = $_SESSION['user']['avatar'];
+					if (!empty($avatarHash)) {
+						$format = (strpos($avatarHash, 'a_') === 0) ? 'gif' : 'png';
+						
+						$avatarUrl = "https://cdn.discordapp.com/avatars/{$_SESSION['user']["id"]}/{$avatarHash}.{$format}?size=1024";
+					}
+
+					if (isset($avatarUrl)) {
+						echo "<img src='{$avatarUrl}' alt=logo>";
+					} else {
+						echo '<div class="text">' . $_SESSION['user']['global_name'][0] . '</div>';
+					}
+				?>
 			</div>
 			<div class="name">
 				<?php

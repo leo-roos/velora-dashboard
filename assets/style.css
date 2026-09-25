@@ -146,13 +146,12 @@ body {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  padding: 0;
 }
 .sidebar .loggedin .logo .text {
   text-align: center;
   font-weight: 700;
   font-size: 20px;
-}
-.sidebar .loggedin .logo img, .sidebar .loggedin .logo .text {
   padding: 5px;
 }
 .sidebar .loggedin .name {
