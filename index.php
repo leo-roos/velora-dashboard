@@ -24,26 +24,42 @@ include __DIR__ . "/includes/header.php";
 			</div>
 		</div>
 		<nav class="navigation">
-			<a href="<?php echo BASE_URL . "/" ?>" class="item">
-				<i class="fa-light fa-table-columns"></i>
-				<div class="label">Dashboard</div>
-			</a>
-			<a href="<?php echo BASE_URL . "/?page=analytics" ?>" class="item">
-				<i class="fa-light fa-chart-line network"></i>
-				<div class="label">Analytics</div>
-			</a>
-			<a href="<?php echo BASE_URL . "/?page=players" ?>" class="item">
-				<i class="fa-light fa-users"></i>
-				<div class="label">Players</div>
-			</a>
-			<a href="<?php echo BASE_URL . "/?page=logbook" ?>" class="item">
-				<i class="fa-light fa-book-open"></i>
-				<div class="label">Logbook</div>
-			</a>
-			<a href="<?php echo BASE_URL . "/?page=settings" ?>" class="item">
-				<i class="fa-light fa-sliders"></i>
-				<div class="label">Settings</div>
-			</a>
+			<?php
+				$navigation = [
+					[
+						'title' => "Dashboard",
+						'url'   => "/",
+						'icon'  => "fa-light fa-table-columns",
+					],
+					[
+						'title' => "Analytics",
+						'url'   => "/?page=analytics",
+						'icon'  => "fa-light fa-chart-line network",
+					],
+					[
+						'title' => "Players",
+						'url'   => "/?page=players",
+						'icon'  => "fa-light fa-users",
+					],
+					[
+						'title' => "Logbook",
+						'url'   => "/?page=logbook",
+						'icon'  => "fa-light fa-book-open",
+					],
+					[
+						'title' => "Settings",
+						'url'   => "/?page=settings",
+						'icon'  => "fa-light fa-sliders",
+					]
+				];
+			?>
+
+			<?php foreach ($navigation as $item): ?>
+				<a href="<?php echo BASE_URL . $item["url"]; ?>" class="item">
+					<i class="<?php echo $item["icon"]; ?>"></i>
+					<div class="label"><?php echo $item["title"]; ?></div>
+				</a>
+			<?php endforeach; ?>
 		</nav>
 
 		<div class="loggedin">
