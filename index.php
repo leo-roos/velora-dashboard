@@ -6,10 +6,51 @@ session_start();
 if (!isset($_SESSION['user'])) {
 	header("Location: " . BASE_URL . "/login");
 }
-?>
-
-<?php
 include __DIR__ . "/includes/header.php";
+
+$navigation = [
+	[
+		'title' => "Dashboard",
+		'url'   => "/",
+		'page' => "main.php",
+		'icon'  => "fa-light fa-table-columns",
+	],
+	[
+		'title' => "Analytics",
+		'url'   => "analytics",
+		'page' => "analytics.php",
+		'icon'  => "fa-light fa-chart-line network",
+	],
+	[
+		'title' => "Players",
+		'url'   => "players",
+		'page' => "players.php",
+		'icon'  => "fa-light fa-users",
+	],
+	[
+		'title' => "Logbook",
+		'url'   => "logbook",
+		'page' => "logbook.php",
+		'icon'  => "fa-light fa-book-open",
+	],
+	[
+		'title' => "Settings",
+		'url'   => "settings",
+		'page' => "settings.php",
+		'icon'  => "fa-light fa-sliders",
+	]
+];
+
+$currentPage = $_GET['page'] ?? '/';
+$pageURL = 'main.php';
+
+foreach ($navigation as $item) {
+	if ($item['url'] === $currentPage) {
+		$pageURL = $item['page'];
+		break;
+	}
+}
+
 ?>
 
 <div id="container">
@@ -24,38 +65,8 @@ include __DIR__ . "/includes/header.php";
 			</div>
 		</div>
 		<nav class="navigation">
-			<?php
-				$navigation = [
-					[
-						'title' => "Dashboard",
-						'url'   => "/",
-						'icon'  => "fa-light fa-table-columns",
-					],
-					[
-						'title' => "Analytics",
-						'url'   => "/?page=analytics",
-						'icon'  => "fa-light fa-chart-line network",
-					],
-					[
-						'title' => "Players",
-						'url'   => "/?page=players",
-						'icon'  => "fa-light fa-users",
-					],
-					[
-						'title' => "Logbook",
-						'url'   => "/?page=logbook",
-						'icon'  => "fa-light fa-book-open",
-					],
-					[
-						'title' => "Settings",
-						'url'   => "/?page=settings",
-						'icon'  => "fa-light fa-sliders",
-					]
-				];
-			?>
-
 			<?php foreach ($navigation as $item): ?>
-				<a href="<?php echo BASE_URL . $item["url"]; ?>" class="item">
+				<a href="<?php echo BASE_URL . ($item["url"] != "/" ? "/?page=" .  $item["url"] : "/"); ?>" class="item <?= $item['url'] === $currentPage ? 'active' : '' ?>">
 					<i class="<?php echo $item["icon"]; ?>"></i>
 					<div class="label"><?php echo $item["title"]; ?></div>
 				</a>
@@ -80,24 +91,9 @@ include __DIR__ . "/includes/header.php";
 	</div>
 	<main class="dashboard">
 		<?php
-			$pages = [
-				'main' => 'main.php',
-				'analytics' => 'analytics.php',
-				'players' => 'players.php',
-				'logbook' => 'logbook.php',
-				'settings' => 'settings.php',
-			];
-
-			$page = $_GET['page'] ?? 'main';
-
-			if (!isset($pages[$page])) {
-				$page = 'main';
-				// header('Location: '. BASE_URL . '/404.php');
-			}
-
 			include_once __DIR__ . '/includes/dashboard/header.php';
 			echo '<div class="content">';
-			include_once __DIR__ . '/includes/dashboard/' . $pages[$page];
+			include_once __DIR__ . '/includes/dashboard/' . $pageURL;
 			echo '</div>';
 		?>
 	</main>
@@ -105,8 +101,4 @@ include __DIR__ . "/includes/header.php";
 
 <?php
 include __DIR__ . "/includes/footer.php";
-?>
-
-<?php
-// header("Refresh: 1");
 ?>
