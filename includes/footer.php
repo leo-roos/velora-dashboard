@@ -1,5 +1,5 @@
 <footer>
-    Velora Dashboard &copy; 2026
+    <!-- Velora Dashboard &copy; 2026 -->
 </footer>
 
 </body>
