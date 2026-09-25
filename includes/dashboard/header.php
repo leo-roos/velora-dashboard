@@ -13,6 +13,12 @@
             ?>
         </div>
     </div>
+    <div class="right">
+        <div class="online">
+            <i class="fa-solid fa-globe"></i>
+            <div class="value">
+                <?php echo $serverData["online"] ?> / <?php echo $serverData["serverSlots"] ?>
+            </div>
         </div>
     </div>
 </div>

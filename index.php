@@ -51,6 +51,11 @@ foreach ($navigation as $item) {
 	}
 }
 
+$serverData = [ // mock server data
+	'serverSlots' => 64,
+	'online' => 10,
+]
+
 ?>
 
 <div id="container">
