@@ -1,9 +1,17 @@
+<?php
+$URL_TITLE ??= "Velora Dashboard";
+
+if (!defined('BASE_URL')) {
+    require __DIR__ . "/../config.php";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velora Dashboard</title>
+    <title><?php echo $URL_TITLE ?></title>
     <link rel="stylesheet" href="<?php echo BASE_URL . '/assets/style.css?v=' . filemtime($_SERVER['DOCUMENT_ROOT'] . parse_url(BASE_URL, PHP_URL_PATH) . '/assets/style.css'); ?>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
