@@ -7,48 +7,20 @@ if (!isset($_SESSION['user'])) {
 	header("Location: " . BASE_URL . "/login");
 }
 include __DIR__ . "/includes/header.php";
-
-$navigation = [
-	[
-		'title' => "Overview",
-		'url'   => "/",
-		'page' => "main.php",
-		'icon'  => "fa-light fa-table-columns",
-	],
-	[
-		'title' => "Analytics",
-		'url'   => "analytics",
-		'page' => "analytics.php",
-		'icon'  => "fa-light fa-chart-line network",
-	],
-	[
-		'title' => "Players",
-		'url'   => "players",
-		'page' => "players.php",
-		'icon'  => "fa-light fa-users",
-	],
-	[
-		'title' => "Logbook",
-		'url'   => "logbook",
-		'page' => "logbook.php",
-		'icon'  => "fa-light fa-book-open",
-	],
-	[
-		'title' => "Settings",
-		'url'   => "settings",
-		'page' => "settings.php",
-		'icon'  => "fa-light fa-sliders",
-	]
-];
+include __DIR__ . "/config.nav.php";
 
 $currentPage = $_GET['page'] ?? '/';
-$page = 'main.php';
+$page;
 
-foreach ($navigation as $item) {
+foreach (NAVIGATION as $item) {
 	if ($item['url'] === $currentPage) {
 		$page = $item;
 		break;
 	}
+}
+
+if (!isset($page) || !is_array($page)) {
+    $page = NAVIGATION[0];
 }
 
 $serverData = [ // mock server data
@@ -73,7 +45,7 @@ $serverData = [ // mock server data
 			</div>
 		</div>
 		<nav class="navigation">
-			<?php foreach ($navigation as $item): ?>
+			<?php foreach (array_filter(NAVIGATION, function($value) { return !($value['hidden'] ?? false); }) as $item): ?>
 				<a href="<?php echo BASE_URL . ($item["url"] != "/" ? "/?page=" .  $item["url"] : "/"); ?>" class="item <?= $item['url'] === $currentPage ? 'active' : '' ?>">
 					<i class="<?php echo $item["icon"]; ?>"></i>
 					<div class="label"><?php echo $item["title"]; ?></div>
