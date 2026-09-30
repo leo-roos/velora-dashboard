@@ -1,11 +1,15 @@
 <?php
-    define('OAUTH2_CLIENT_ID', '');
-    define('OAUTH2_CLIENT_SECRET', '');
-    define('REDIRECT_URL', 'http://localhost:5173/velora-dashboard/api/login');
+const BASE_URL = "http://localhost:5173/velora-dashboard";
+const API_BASE_URL = BASE_URL . "/api";
 
-    define('BOT_TOKEN', '');
-    define('DISCORD_GUILD_ID', '');
+const OAUTH2_CLIENT_ID = "";
+const OAUTH2_CLIENT_SECRET = "";
+const REDIRECT_URL = API_BASE_URL . "/login";
 
-    define('BASE_URL', 'http://localhost:5173/velora-dashboard');
-    define('API_BASE_URL', 'http://localhost:5173/velora-dashboard/api');
-?>
+const BOT_TOKEN = "";
+const DISCORD_GUILD_ID = "";
+
+const THEME_CONFIG = [
+    "border-color" => "#ffffff20",
+    "background-color" => "#ffffff15",
+];
