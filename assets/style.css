@@ -1,3 +1,8 @@
+:root {
+  --border-color: #ffffff20;
+  --background-color: #ffffff15;
+}
+
 * {
   box-sizing: border-box;
   font-family: Poppins;
@@ -25,7 +30,7 @@ body {
 .sidebar {
   max-width: 250px;
   height: 100vh;
-  border-right: 1px solid rgba(255, 255, 255, 0.1254901961);
+  border-right: 1px solid var(--border-color);
   overflow: hidden;
   overflow-wrap: anywhere;
   display: flex;
@@ -103,8 +108,8 @@ body {
   text-decoration: none;
 }
 .sidebar .navigation .item.active, .sidebar .navigation .item:hover {
-  border-color: rgba(255, 255, 255, 0.1254901961);
-  background-color: rgba(255, 255, 255, 0.0823529412);
+  border-color: var(--border-color);
+  background-color: var(--background-color);
 }
 .sidebar .navigation .item.active i, .sidebar .navigation .item.active .label, .sidebar .navigation .item:hover i, .sidebar .navigation .item:hover .label {
   color: #fff;
@@ -128,14 +133,14 @@ body {
   align-items: center;
   gap: 10px;
   padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1254901961);
+  border-top: 1px solid var(--border-color);
 }
 .sidebar .loggedin .logo {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #27272A;
-  border: 1px solid rgba(255, 255, 255, 0.1254901961);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
   width: 35px;
   height: 35px;
@@ -187,7 +192,7 @@ body {
   gap: 10px;
 }
 .dashboard .content.main .hero .overview .stats .stat {
-  border: 1px solid rgba(255, 255, 255, 0.1254901961);
+  border: 1px solid var(--border-color);
   flex: 1;
   border-radius: 5px;
   padding: 10px;
@@ -215,7 +220,7 @@ body {
   flex-direction: row;
   align-items: center;
   height: 50px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1254901961);
+  border-bottom: 1px solid var(--border-color);
   box-sizing: content-box;
 }
 .dashboard .header .left {
@@ -245,7 +250,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1254901961);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   gap: 10px;
   padding: 5px 10px;
