@@ -6,6 +6,29 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
 	header("Location: " . BASE_URL . "/login");
 }
+
+try
+{
+    $con = new PDO("mysql:host=" . DB_servername . ";dbname=" . DB_name . ";charset=utf8mb4", DB_username, DB_password);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+	$userId = $_SESSION['user_id'];
+    $sql = "SELECT * FROM `users` WHERE user_id = \"$userId\" LIMIT 1;";
+    $result = $con->query($sql);
+
+	if ($data = $result->fetch()) {
+		print_r($data);
+	} else {
+		echo "no account found";
+	}
+
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
+
+
 include __DIR__ . "/includes/header.php";
 include __DIR__ . "/config.nav.php";
 
@@ -57,23 +80,23 @@ $serverData = [ // mock server data
 			<div class="logo">
 				<?php
 					$avatarUrl = null;
-					$avatarHash = $_SESSION['user']['avatar'];
+					$avatarHash = $_SESSION['discord_data']['avatar'];
 					if (!empty($avatarHash)) {
 						$format = (strpos($avatarHash, 'a_') === 0) ? 'gif' : 'png';
 						
-						$avatarUrl = "https://cdn.discordapp.com/avatars/{$_SESSION['user']["id"]}/{$avatarHash}.{$format}?size=1024";
+						$avatarUrl = "https://cdn.discordapp.com/avatars/{$_SESSION['discord_data']["id"]}/{$avatarHash}.{$format}?size=1024";
 					}
 
 					if (isset($avatarUrl)) {
 						echo "<img src='{$avatarUrl}' alt=logo>";
 					} else {
-						echo '<div class="text">' . htmlspecialchars($_SESSION['user']['global_name'][0]) . '</div>';
+						echo '<div class="text">' . htmlspecialchars($_SESSION['discord_data']['global_name'][0]) . '</div>';
 					}
 				?>
 			</div>
 			<div class="name">
 				<?php
-					echo htmlspecialchars($_SESSION['user']['global_name']);
+					echo htmlspecialchars($_SESSION['discord_data']['global_name']);
 				?>
 			</div>
 		</div>

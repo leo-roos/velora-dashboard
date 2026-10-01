@@ -172,6 +172,37 @@ body {
   justify-content: center;
 }
 
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  padding: 50px;
+  box-sizing: content-box;
+  border-radius: 5px;
+}
+.login form label, .login form input, .login form button {
+  width: 100%;
+}
+.login form input {
+  margin-bottom: 20px;
+  background-color: var(--border-color);
+  border: none;
+}
+.login form .discord-login {
+  margin-top: 20px;
+  padding: 5px 10px;
+}
+
 .dashboard .content.main .hero {
   display: flex;
   flex-direction: column;
