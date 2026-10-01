@@ -3,7 +3,7 @@ require __DIR__ . "/../config.php";
 
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['discord_data'])) {
 	header("Location: " . BASE_URL . "/login");
 }
 ?>
@@ -29,7 +29,7 @@ include __DIR__ . "/../includes/header.php";
 <br>
 <h2>User Response :</h2>
 <div class="response-block">
-	<p><?php echo json_encode($_SESSION['user']); ?></p>
+	<p><?php echo json_encode($_SESSION['discord_data']); ?></p>
 </div>
 
 <?php

@@ -1,6 +1,6 @@
 <div class="hero">
     <div class="welcome">
-        Welcome, <?php echo htmlspecialchars($_SESSION['user']['global_name']) ?>!
+        Welcome, <?php echo htmlspecialchars($_SESSION['discord_data']['global_name']) ?>!
     </div>
     <div class="overview">
         Quick overview

@@ -3,7 +3,7 @@ require __DIR__ . "/config.php";
 
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user_id'])) {
 	header("Location: " . BASE_URL . "/login");
 }
 include __DIR__ . "/includes/header.php";

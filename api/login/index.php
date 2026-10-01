@@ -94,11 +94,8 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headersUser);
 $responseUser = curl_exec($curl);
 $resultsUser = json_decode($responseUser, true);
-$_SESSION['user'] = $resultsUser;
-$_SESSION['username'] = $resultsUser['username'];
-$_SESSION['discriminator'] = $resultsUser['discriminator'] ?? '0';
-$_SESSION['user_id'] = $resultsUser['id'];
-$_SESSION['user_avatar'] = $resultsUser['avatar'];
+$_SESSION['discord_data'] = $resultsUser;
+$_SESSION['discord_data']['discriminator'] ??= '0';
 $_SESSION['valid_till'] = time() + $results['expires_in'];
 
 
