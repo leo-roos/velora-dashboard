@@ -3,31 +3,9 @@ require __DIR__ . "/config.php";
 
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['discord_data'])) {
 	header("Location: " . BASE_URL . "/login");
 }
-
-try
-{
-    $con = new PDO("mysql:host=" . DB_servername . ";dbname=" . DB_name . ";charset=utf8mb4", DB_username, DB_password);
-    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-	$userId = $_SESSION['user_id'];
-    $sql = "SELECT * FROM `users` WHERE user_id = \"$userId\" LIMIT 1;";
-    $result = $con->query($sql);
-
-	if ($data = $result->fetch()) {
-		print_r($data);
-	} else {
-		echo "no account found";
-	}
-
-}
-catch(PDOException $e)
-{
-    echo "Connection failed: " . $e->getMessage();
-}
-
 
 include __DIR__ . "/includes/header.php";
 include __DIR__ . "/config.nav.php";

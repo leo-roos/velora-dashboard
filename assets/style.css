@@ -190,6 +190,16 @@ body {
   box-sizing: content-box;
   border-radius: 5px;
 }
+.login form .form-group:has(input:invalid) label {
+  color: red;
+}
+.login form .form-group:has(input:required) label::after {
+  content: " *";
+  color: #d93025;
+}
+.login form .form-group {
+  width: 100%;
+}
 .login form label, .login form input, .login form button {
   width: 100%;
 }
@@ -197,9 +207,18 @@ body {
   margin-bottom: 20px;
   background-color: var(--border-color);
   border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+}
+.login form input:focus-visible {
+  outline: none;
+  background-color: var(--background-color);
+}
+.login form input {
+  transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.25s;
 }
 .login form .discord-login {
-  margin-top: 20px;
   padding: 5px 10px;
 }
 

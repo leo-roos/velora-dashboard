@@ -13,7 +13,7 @@ include __DIR__ . "/../includes/header.php";
     <form action="../api/login/" method="post">
         <div class="discord-login">
             <a href="<?php echo htmlspecialchars($authorize_url); ?>">
-                Logga in med Discord
+                Länka discord
             </a>
         </div>
     </form>

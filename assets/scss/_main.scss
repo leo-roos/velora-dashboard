@@ -195,6 +195,19 @@ body {
         box-sizing: content-box;
         border-radius: 5px;
 
+        .form-group:has(input:invalid) label {
+            color: red;
+        }
+        .form-group:has(input:required) label::after {
+            content: " *";
+            color: #d93025;
+        }
+
+        .form-group {
+            width: 100%;
+        }
+
+
         label, input, button {
             width: 100%;
         }
@@ -202,10 +215,18 @@ body {
             margin-bottom: 20px;
             background-color: var(--border-color);
             border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+
+            &:focus-visible {
+                outline: none;
+                background-color: var(--background-color);
+            }
+            transition: cubic-bezier(0.39, 0.575, 0.565, 1) .25s;
         }
 
         .discord-login {
-            margin-top: 20px;
             padding: 5px 10px;
         }
     }
