@@ -1,0 +1,313 @@
+:root {
+  --border-color: #ffffff20;
+  --background-color: #ffffff15;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #09090B;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  max-width: 250px;
+  height: 100vh;
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sidebar > * {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.sidebar > *:first-child {
+  padding-top: 15px;
+}
+.sidebar > *:last-child {
+  padding-bottom: 15px;
+}
+.sidebar .server-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 15px;
+}
+.sidebar .server-info .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff8400;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.sidebar .server-info .logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.sidebar .server-info .logo .text {
+  text-align: center;
+  font-weight: 700;
+  font-size: 26px;
+}
+.sidebar .server-info .logo img, .sidebar .server-info .logo .text {
+  padding: 5px;
+}
+.sidebar .server-info .name {
+  font-weight: 700;
+}
+.sidebar .navigation {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.sidebar .navigation .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+  text-decoration: none;
+}
+.sidebar .navigation .item.active, .sidebar .navigation .item:hover {
+  border-color: var(--border-color);
+  background-color: var(--background-color);
+}
+.sidebar .navigation .item.active i, .sidebar .navigation .item.active .label, .sidebar .navigation .item:hover i, .sidebar .navigation .item:hover .label {
+  color: #fff;
+}
+.sidebar .navigation .item i {
+  flex-shrink: 0;
+}
+.sidebar .navigation .item .label {
+  font-weight: 500;
+  font-size: 17px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.sidebar .navigation .item i, .sidebar .navigation .item .label {
+  color: rgba(255, 255, 255, 0.7294117647);
+  transition: color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+}
+.sidebar .loggedin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+.sidebar .loggedin .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #27272A;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+}
+.sidebar .loggedin .logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 0;
+}
+.sidebar .loggedin .logo .text {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 5px;
+}
+.sidebar .loggedin .name {
+  font-weight: 700;
+}
+
+#error-404 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  padding: 50px;
+  box-sizing: content-box;
+  border-radius: 5px;
+}
+.login form .form-group:has(input:invalid) label {
+  color: red;
+}
+.login form .form-group:has(input:required) label::after {
+  content: " *";
+  color: #d93025;
+}
+.login form .form-group {
+  width: 100%;
+}
+.login form label, .login form input, .login form button {
+  width: 100%;
+}
+.login form input {
+  margin-bottom: 20px;
+  background-color: var(--border-color);
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+}
+.login form input:focus-visible {
+  outline: none;
+  background-color: var(--background-color);
+}
+.login form input {
+  transition: cubic-bezier(0.39, 0.575, 0.565, 1) 0.25s;
+}
+.login form .discord-login {
+  padding: 5px 10px;
+}
+
+.dashboard .content.main .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.dashboard .content.main .hero .welcome {
+  font-weight: 700;
+  font-size: 18px;
+}
+.dashboard .content.main .hero .overview {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dashboard .content.main .hero .overview .stats {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.dashboard .content.main .hero .overview .stats .stat {
+  border: 1px solid var(--border-color);
+  flex: 1;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dashboard .content.main .hero .overview .stats .stat .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.dashboard .content, .dashboard .header {
+  padding: 15px;
+}
+.dashboard .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid var(--border-color);
+  box-sizing: content-box;
+}
+.dashboard .header .left {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7294117647);
+}
+.dashboard .header .left .breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.dashboard .header .left .breadcrumbs .breadcrumb::before {
+  content: "/";
+  margin-right: 5px;
+}
+.dashboard .header .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 5px;
+  flex: 1;
+}
+.dashboard .header .right .online {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  gap: 10px;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+.dashboard .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=style.css.map */

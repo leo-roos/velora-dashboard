@@ -3,33 +3,90 @@ require __DIR__ . "/config.php";
 
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['discord_data'])) {
 	header("Location: " . BASE_URL . "/login");
 }
-?>
 
-
-<?php
 include __DIR__ . "/includes/header.php";
-?>
+include __DIR__ . "/config.nav.php";
 
-<a href="<?php echo "" . BASE_URL . "/logout" ?>">Logout</a>
+$currentPage = $_GET['page'] ?? '/';
+$page;
 
-<h2> User Details :</h2>
-<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discriminator']; ?></p>
-<p> ID : <?php echo $_SESSION['user_id']; ?></p>
-<?php
-	if (isset($_SESSION['email'])) {
-		echo '<p> Email: ' . $_SESSION['email'] . '</p>';
+foreach (NAVIGATION as $item) {
+	if ($item['url'] === $currentPage) {
+		$page = $item;
+		break;
 	}
+}
+
+if (!isset($page) || !is_array($page)) {
+    $page = NAVIGATION[0];
+}
+
+$serverData = [ // mock server data
+	'serverSlots' => 64,
+	'online' => [
+		'all' => 10,
+		'staff' => 2,
+	],
+]
+
 ?>
 
-<p> Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
-																	echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p>
-<br>
-<h2>User Response :</h2>
-<div class="response-block">
-	<p><?php echo json_encode($_SESSION['user']); ?></p>
+<div id="container">
+	<div class="sidebar">
+		<div class="server-info">
+			<div class="logo">
+				<!-- <img src="<?php echo BASE_URL . "/assets/images/logo.png" ?>" alt="logo"> -->
+				<div class="text">V</div>
+			</div>
+			<div class="name">
+				Velora Dashboard
+			</div>
+		</div>
+		<nav class="navigation">
+			<?php foreach (array_filter(NAVIGATION, function($value) { return !($value['hidden'] ?? false); }) as $item): ?>
+				<a href="<?php echo BASE_URL . ($item["url"] != "/" ? "/?page=" .  $item["url"] : "/"); ?>" class="item <?= $item['url'] === $currentPage ? 'active' : '' ?>">
+					<i class="<?php echo $item["icon"]; ?>"></i>
+					<div class="label"><?php echo $item["title"]; ?></div>
+				</a>
+			<?php endforeach; ?>
+		</nav>
+
+		<div class="loggedin">
+			<div class="logo">
+				<?php
+					$avatarUrl = null;
+					$avatarHash = $_SESSION['discord_data']['avatar'];
+					if (!empty($avatarHash)) {
+						$format = (strpos($avatarHash, 'a_') === 0) ? 'gif' : 'png';
+						
+						$avatarUrl = "https://cdn.discordapp.com/avatars/{$_SESSION['discord_data']["id"]}/{$avatarHash}.{$format}?size=1024";
+					}
+
+					if (isset($avatarUrl)) {
+						echo "<img src='{$avatarUrl}' alt=logo>";
+					} else {
+						echo '<div class="text">' . htmlspecialchars($_SESSION['discord_data']['global_name'][0]) . '</div>';
+					}
+				?>
+			</div>
+			<div class="name">
+				<?php
+					echo htmlspecialchars($_SESSION['discord_data']['global_name']);
+				?>
+			</div>
+		</div>
+	</div>
+	<main class="dashboard">
+		<?php
+			include_once __DIR__ . '/includes/dashboard/header.php';
+			echo '<div class="content ' . ($page['url'] == "/" ? "main" : $page['url']) . '">';
+			include_once __DIR__ . '/includes/dashboard/' . $page['page'];
+			echo '</div>';
+		?>
+	</main>
 </div>
 
 <?php
