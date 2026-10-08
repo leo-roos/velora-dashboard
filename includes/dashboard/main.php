@@ -1,3 +1,33 @@
+<?php
+$stats = [
+    [
+        "title" => "Online Players",
+        "icon" => "fa-light fa-users",
+        "value" => "{$serverData["online"]["all"]} / {$serverData["serverSlots"]}",
+    ],
+    [
+        "title" => "Online Staff",
+        "icon" => "fa-light fa-screen-users",
+        "value" => 5,
+    ],
+    [
+        "title" => "Recent Disconnections (1 hour)",
+        "icon" => "fa-light fa-user-xmark",
+        "value" => 124,
+    ],
+    [
+        "title" => "Recent Bans (24 hours)",
+        "icon" => "fa-light fa-users-slash",
+        "value" => 2,
+    ]
+];
+
+function renderCard($data) {
+    extract($data);
+    include __DIR__ . '/../components/card.php';
+}
+?>
+
 <div class="hero">
     <div class="welcome">
         Welcome, <?php echo htmlspecialchars($_SESSION['discord_data']['global_name']) ?>!
@@ -5,50 +35,10 @@
     <div class="overview">
         Quick overview
         <div class="stats">
-            <div class="stat">
-                <div class="top">
-                    <i class="fa-light fa-users"></i>
-                    <div class="title">
-                        Online Players
-                    </div>
-                </div>
-                <div class="value">
-                    <?php echo $serverData["online"]["all"] ?> / <?php echo $serverData["serverSlots"] ?>
-                </div>
-            </div>
-            <div class="stat">
-                <div class="top">
-                    <i class="fa-light fa-screen-users"></i>
-                    <div class="title">
-                        Online Staff
-                    </div>
-                </div>
-                <div class="value">
-                    5
-                </div>
-            </div>
-            <div class="stat">
-                <div class="top">
-                    <i class="fa-light fa-user-xmark"></i>
-                    <div class="title">
-                        Recent Disconnections (1 hour)
-                    </div>
-                </div>
-                <div class="value">
-                    124
-                </div>
-            </div>
-            <div class="stat">
-                <div class="top">
-                    <i class="fa-light fa-users-slash"></i>
-                    <div class="title">
-                        Recent Bans (24 hours)
-                    </div>
-                </div>
-                <div class="value">
-                    <?php echo $serverData["online"]["all"] ?> / <?php echo $serverData["serverSlots"] ?>
-                </div>
-            </div>
+            <?php foreach ($stats as $key => $value) {
+                renderCard($value);
+            }
+            ?>
         </div>
     </div>
 </div>
