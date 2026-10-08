@@ -17,7 +17,7 @@
         <div class="online">
             <i class="fa-solid fa-globe"></i>
             <div class="value">
-                10 / 64
+                <?php echo htmlspecialchars($serverData->onlinePlayers) ?> / <?php echo htmlspecialchars($serverData->serverSlots) ?>
             </div>
         </div>
     </div>
