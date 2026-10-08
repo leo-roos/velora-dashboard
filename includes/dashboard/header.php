@@ -17,8 +17,15 @@
         <div class="online">
             <i class="fa-solid fa-globe"></i>
             <div class="value">
-                <?php echo $serverData["online"]["all"] ?> / <?php echo $serverData["serverSlots"] ?>
+                10 / 64
             </div>
         </div>
     </div>
 </div>
+
+<script>
+const onlinePlayers = document.querySelector(".header .right .online .value");
+addDataUpdater(function() {
+    onlinePlayers.textContent = `${serverData.onlinePlayers} / ${serverData.serverSlots}`;
+});
+</script>

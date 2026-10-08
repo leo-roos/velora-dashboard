@@ -239,11 +239,12 @@ body {
 .dashboard .content.main .hero .overview .stats {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
 }
 .dashboard .content.main .hero .overview .stats .stat {
   border: 1px solid var(--border-color);
-  flex: 1;
+  width: calc(25% - 10px);
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -256,13 +257,36 @@ body {
   align-items: center;
   gap: 10px;
 }
+.dashboard .content.main .hero .overview .stats .stat.scroll {
+  width: calc(50% - 10px);
+}
+.dashboard .content.main .hero .overview .stats .stat .content {
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.dashboard .content.main .hero .overview .stats .stat .content .item {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid transparent;
+  transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+}
+.dashboard .content.main .hero .overview .stats .stat .content .item:hover {
+  border-color: var(--border-color);
+  background-color: var(--background-color);
+}
+.dashboard .content.main .hero .overview .stats .stat .content .item:hover i, .dashboard .content.main .hero .overview .stats .stat .content .item:hover .label {
+  color: #fff;
+}
 
 .dashboard {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
-.dashboard .content, .dashboard .header {
+.dashboard > .content, .dashboard > .header {
   padding: 15px;
 }
 .dashboard .header {
@@ -306,7 +330,7 @@ body {
   padding: 5px 10px;
   font-size: 18px;
 }
-.dashboard .content {
+.dashboard > .content {
   flex: 1;
   display: flex;
   flex-direction: column;
