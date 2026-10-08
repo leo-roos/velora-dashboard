@@ -6,7 +6,7 @@ session_start();
 ?>
 
 <?php
-include __DIR__ . "/includes/head.php";
+include __DIR__ . "/../includes/head.php";
 ?>
 
 <div class="login">
