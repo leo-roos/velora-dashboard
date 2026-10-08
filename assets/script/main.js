@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 		const res = await fetch(url.toString());
 		const data = await res.json();
+
+        if (res.ok == false) {
+            window.location.href = "http://localhost:5173/velora-dashboard/login"
+        }
+
         serverData = data;
         dataUpdateFunctions.forEach(func => {
             func();
