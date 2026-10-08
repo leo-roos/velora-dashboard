@@ -7,7 +7,7 @@ if (!isset($_SESSION['discord_data'])) {
 	header("Location: " . BASE_URL . "/login");
 }
 
-include __DIR__ . "/includes/header.php";
+include __DIR__ . "/includes/head.php";
 include __DIR__ . "/config.nav.php";
 
 $currentPage = $_GET['page'] ?? '/';
