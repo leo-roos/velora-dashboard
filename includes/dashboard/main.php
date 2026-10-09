@@ -22,11 +22,36 @@ $stats = [
     ]
 ];
 
-function renderCard($data) {
+$scrollCards = [
+    [
+        "title" => "Recent Kicks",
+        "icon" => "fa-light fa-user-xmark",
+        "id" => "recentKicksList",
+    ],
+    [
+        "title" => "Recent Bans",
+        "icon" => "fa-light fa-gavel",
+        "id" => "recentBansList",
+    ],
+    [
+        "title" => "Active Community Service",
+        "icon" => "fa-light fa-list-check",
+        "id" => "communityServiceList",
+    ],
+    [
+        "title" => "Recent Staff Actions",
+        "icon" => "fa-light fa-shield-halved",
+        "id" => "recentStaffActionsList",
+    ],
+];
+
+function renderCard($data)
+{
     extract($data);
     include __DIR__ . '/../components/card.php';
 }
-function renderScrollCard($data) {
+function renderScrollCard($data)
+{
     extract($data);
     include __DIR__ . '/../components/card-scroll.php';
 }
@@ -39,18 +64,16 @@ function renderScrollCard($data) {
     <div class="overview">
         Quick overview
         <div class="stats">
-            <?php 
+            <?php
             foreach ($stats as $key => $value) {
                 renderCard($value);
             }
 
-            renderScrollCard([
-                "title" => "Online Players",
-                "icon" => "fa-light fa-users",
-                "id" => "testPlayers",
-            ]);
+            foreach ($scrollCards as $card) {
+                renderScrollCard($card);
+            }
             ?>
-            
+
         </div>
     </div>
 </div>
@@ -60,23 +83,61 @@ const cards = document.querySelectorAll(".stats .stat");
 addDataUpdater(function() {
     cards.forEach(card => {
         const value = card.querySelector(".value");
+        let content;
+        let innerHTML;
         switch (card.id) {
             case "onlinePlayers":
-                value.textContent = `${serverData.onlinePlayers} / ${serverData.serverSlots}`;
+                value.textContent = `${serverData.players.length} / ${serverData.serverSlots}`;
                 break;
             case "onlineStaff":
-                value.textContent = `${serverData.onlineStaff}`;
+                value.textContent = `${serverData.players.filter(p => p.staff == true).length}`;
                 break;
             case "recentDisconnections":
-                value.textContent = `${serverData.recentDisconnections}`;
+                value.textContent = `${serverData.recentDisconnections.length}`;
                 break;
             case "recentBans":
-                value.textContent = `${serverData.recentBans}`;
+                value.textContent = `${serverData.recentBans.length}`;
                 break;
-            case "testPlayers":
-                const content = card.querySelector(".content");
-                let innerHTML = "";
-                serverData.players.forEach(player => {
+            case "recentKicksList":
+                content = card.querySelector(".content");
+                innerHTML = "";
+                serverData.recentKicks.forEach(player => {
+                    innerHTML += `
+                    <a href="players/${player.id}" class="item">${player.name} (${player.id})</a>
+                    `;
+                });
+                if (content.innerHTML != innerHTML) {
+                    content.innerHTML = innerHTML;
+                }
+                break;
+            case "recentBansList":
+                content = card.querySelector(".content");
+                innerHTML = "";
+                serverData.recentBans.forEach(player => {
+                    innerHTML += `
+                    <a href="players/${player.id}" class="item">${player.name} (${player.id})</a>
+                    `;
+                });
+                if (content.innerHTML != innerHTML) {
+                    content.innerHTML = innerHTML;
+                }
+                break;
+            case "communityServiceList":
+                content = card.querySelector(".content");
+                innerHTML = "";
+                serverData.activeCommunityService.forEach(player => {
+                    innerHTML += `
+                    <a href="players/${player.id}" class="item">${player.name} (${player.id})</a>
+                    `;
+                });
+                if (content.innerHTML != innerHTML) {
+                    content.innerHTML = innerHTML;
+                }
+                break;
+            case "recentStaffActionsList":
+                content = card.querySelector(".content");
+                innerHTML = "";
+                serverData.recentStaffActions.forEach(player => {
                     innerHTML += `
                     <a href="players/${player.id}" class="item">${player.name} (${player.id})</a>
                     `;

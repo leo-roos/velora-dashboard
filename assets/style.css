@@ -25,14 +25,20 @@ body {
 #container {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .sidebar {
+  width: 250px;
   max-width: 250px;
   height: 100vh;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   overflow-wrap: anywhere;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -242,50 +248,15 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
-.dashboard .content.main .hero .overview .stats .stat {
-  border: 1px solid var(--border-color);
-  width: calc(25% - 10px);
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.dashboard .content.main .hero .overview .stats .stat .top {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-.dashboard .content.main .hero .overview .stats .stat.scroll {
-  width: calc(50% - 10px);
-}
-.dashboard .content.main .hero .overview .stats .stat .content {
-  padding-right: 15px;
-  display: flex;
-  flex-direction: column;
-  max-height: 400px;
-  overflow-y: auto;
-}
-.dashboard .content.main .hero .overview .stats .stat .content .item {
-  cursor: pointer;
-  padding: 10px;
-  border: 1px solid transparent;
-  transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
-}
-.dashboard .content.main .hero .overview .stats .stat .content .item:hover {
-  border-color: var(--border-color);
-  background-color: var(--background-color);
-}
-.dashboard .content.main .hero .overview .stats .stat .content .item:hover i, .dashboard .content.main .hero .overview .stats .stat .content .item:hover .label {
-  color: #fff;
-}
 
 .dashboard {
   display: flex;
   flex-direction: column;
   flex: 1;
   animation: fadeIn 0.5s;
+  position: relative;
+  margin-left: 250px;
+  width: calc(100% - 250px);
 }
 .dashboard > .content, .dashboard > .header {
   padding: 15px;
@@ -344,4 +315,44 @@ body {
   to {
     opacity: 1;
   }
+}
+.stat {
+  border: 1px solid var(--border-color);
+  width: calc(25% - 10px);
+  border-radius: 5px;
+  padding: 10px;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.stat .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.stat.scroll {
+  width: calc(50% - 10px);
+}
+.stat .content {
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.stat .content .item {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid transparent;
+  transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+}
+.stat .content .item:hover {
+  border-color: var(--border-color);
+  background-color: var(--background-color);
+}
+.stat .content .item:hover i, .stat .content .item:hover .label {
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */

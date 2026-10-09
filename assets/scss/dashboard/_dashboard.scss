@@ -5,6 +5,10 @@
     flex-direction: column;
     flex: 1;
     animation: fadeIn .5s;
+    
+    position: relative;
+    margin-left: 250px;
+    width: calc(100% - 250px);
 
     & > .content, & > .header {
         padding: 15px;

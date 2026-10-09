@@ -12,22 +12,54 @@ if (!$isFromServer) {
 }
 
 $data = [
-    "onlinePlayers" => 5,
-    "onlineStaff" => 2,
     "serverSlots" => 64,
-    "recentDisconnections" => 124,
-    "recentBans" => 2,
 
     "players" => [
         [
             "name" => "Leo",
             "id" => 1,
+            "staff" => true,
             "character" => [
                 "first-name" => "Leo",
                 "last-name" => "Andersson",
             ],
-        ]
-    ]
+        ],
+    ],
+    "recentKicks" => [
+        [
+            "name" => "Leo",
+            "id" => 1,
+            "staff" => true,
+        ],
+    ],
+    "recentBans" => [
+        [
+            "name" => "Leo",
+            "id" => 1,
+            "staff" => true,
+        ],
+    ],
+    "recentDisconnections" => [
+        [
+            "name" => "Leo",
+            "id" => 1,
+            "staff" => true,
+        ],
+    ],
+    "activeCommunityService" => [
+        [
+            "name" => "Leo",
+            "id" => 1,
+            "staff" => true,
+        ],
+    ],
+    "recentStaffActions" => [
+        [
+            "name" => "Leo",
+            "id" => 1,
+            "staff" => true,
+        ],
+    ],
 ];
 
 http_response_code(200);
