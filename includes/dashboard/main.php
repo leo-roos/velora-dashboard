@@ -44,17 +44,6 @@ $scrollCards = [
         "id" => "recentStaffActionsList",
     ],
 ];
-
-function renderCard($data)
-{
-    extract($data);
-    include __DIR__ . '/../components/card.php';
-}
-function renderScrollCard($data)
-{
-    extract($data);
-    include __DIR__ . '/../components/card-scroll.php';
-}
 ?>
 
 <div class="hero">
