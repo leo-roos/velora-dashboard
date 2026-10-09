@@ -228,11 +228,6 @@ body {
   padding: 5px 10px;
 }
 
-.dashboard .content.main .hero {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
 .dashboard .content.main .hero .welcome {
   font-weight: 700;
   font-size: 18px;
@@ -247,6 +242,58 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.dashboard .content.players {
+  gap: 10px;
+}
+
+.search {
+  background: transparent;
+  color: #fff;
+  padding: 10px 15px;
+  box-sizing: content-box;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+.search:focus {
+  border-color: rgba(255, 255, 255, 0.5843137255);
+}
+.search {
+  transition: border-color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+}
+.search:focus-visible {
+  outline: none;
+}
+
+.content#players {
+  border: 1px solid var(--border-color);
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+  overflow-y: auto;
+}
+.content#players .item {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+}
+.content#players .item:hover {
+  border-color: var(--border-color);
+  background-color: var(--background-color);
+}
+.content#players .item:hover i, .content#players .item:hover .label {
+  color: #fff;
 }
 
 .dashboard {
@@ -306,6 +353,16 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+.dashboard .hero {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.dashboard .hero .title, .dashboard .hero .welcome {
+  font-size: 20px;
+  font-weight: 600;
+  text-shadow: 0px 0px 1px #FFFFFF;
 }
 
 @keyframes fadeIn {
