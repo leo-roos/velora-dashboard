@@ -4,8 +4,13 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    animation: fadeIn .5s;
+    
+    position: relative;
+    margin-left: 250px;
+    width: calc(100% - 250px);
 
-    .content, .header {
+    & > .content, & > .header {
         padding: 15px;
     }
     .header {
@@ -56,9 +61,18 @@
             }
         }
     }
-    .content {
+    & > .content {
         flex: 1;
         display: flex;
         flex-direction: column;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

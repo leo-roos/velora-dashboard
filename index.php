@@ -7,7 +7,7 @@ if (!isset($_SESSION['discord_data'])) {
 	header("Location: " . BASE_URL . "/login");
 }
 
-include __DIR__ . "/includes/header.php";
+include __DIR__ . "/includes/head.php";
 include __DIR__ . "/config.nav.php";
 
 $currentPage = $_GET['page'] ?? '/';
@@ -24,15 +24,23 @@ if (!isset($page) || !is_array($page)) {
     $page = NAVIGATION[0];
 }
 
-$serverData = [ // mock server data
-	'serverSlots' => 64,
-	'online' => [
-		'all' => 10,
-		'staff' => 2,
-	],
-]
-
+$serverData = file_get_contents("http://localhost:5173/velora-dashboard/api/server/");
+$serverData = json_decode($serverData);
 ?>
+
+<script>
+	const _serverData = <?php echo var_export(json_encode($serverData)); ?>
+
+	let serverData;
+	if (_serverData) {
+		serverData = JSON.parse(_serverData);
+	}
+
+	const dataUpdateFunctions = [];
+	function addDataUpdater(func) {
+		dataUpdateFunctions.push(func);
+	}
+</script>
 
 <div id="container">
 	<div class="sidebar">
@@ -88,6 +96,8 @@ $serverData = [ // mock server data
 		?>
 	</main>
 </div>
+
+<script src="<?php echo BASE_URL . '/assets/script/main.js?v=' . filemtime($_SERVER['DOCUMENT_ROOT'] . parse_url(BASE_URL, PHP_URL_PATH) . '/assets/script/main.js'); ?>"></script>
 
 <?php
 include __DIR__ . "/includes/footer.php";

@@ -20,15 +20,21 @@ body {
 #container {
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .sidebar {
-    // width: 250px;
+    width: 250px;
     max-width: 250px;
     height: 100vh;
     border-right: 1px solid var(--border-color);
     overflow: hidden;
     overflow-wrap: anywhere;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;

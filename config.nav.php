@@ -8,12 +8,6 @@ const NAVIGATION = [
 		'icon'  => "fa-light fa-table-columns",
 	],
 	[
-		'title' => "Analytics",
-		'url'   => "analytics",
-		'page' => "analytics.php",
-		'icon'  => "fa-light fa-chart-line network",
-	],
-	[
 		'title' => "Players",
 		'url'   => "players",
 		'page' => "players.php",
@@ -24,6 +18,12 @@ const NAVIGATION = [
 		'url'   => "logbook",
 		'page' => "logbook.php",
 		'icon'  => "fa-light fa-book-open",
+	],
+	[
+		'title' => "Analytics",
+		'url'   => "analytics",
+		'page' => "analytics.php",
+		'icon'  => "fa-light fa-chart-line network",
 	],
 	[
 		'title' => "Admins",
