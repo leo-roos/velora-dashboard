@@ -7,9 +7,11 @@
             <?php echo htmlspecialchars($title) ?>
         </div>
     </div>
-    <div class="value">
-        <?php echo htmlspecialchars($value ?? "") ?>
-    </div>
+    <?php if (isset($value)): ?>
+        <div class="value">
+            <?php echo htmlspecialchars($value ?? "") ?>
+        </div>
+    <?php endif; ?>
     <div class="content">
         <div class="item">aaaa</div>
         <div class="item">aaaa</div>
