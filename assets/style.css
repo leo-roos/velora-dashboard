@@ -265,7 +265,7 @@ body {
   display: flex;
   flex-direction: column;
   max-height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .dashboard .content.main .hero .overview .stats .stat .content .item {
   cursor: pointer;
