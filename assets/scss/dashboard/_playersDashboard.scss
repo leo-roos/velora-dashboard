@@ -1,0 +1,56 @@
+.dashboard .content.players {
+    gap: 10px;
+}
+
+.search {
+    // width: fit-content;
+
+    background: transparent;
+    color: #fff;
+    padding: 10px 15px;
+    box-sizing: content-box;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+
+    &:focus {
+        border-color: #ffffff95;
+    }
+    transition: border-color cubic-bezier(0.175, 0.885, 0.32, 1.275) .25s;;
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.content#players {
+    border: 1px solid var(--border-color);
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    max-height: 600px;
+    overflow-y: auto;
+
+    .item {
+        cursor: pointer;
+        
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) .25s;
+        &:hover {
+            border-color: var(--border-color);
+            background-color: var(--background-color);
+            i, .label {
+                color: #fff;
+            }
+        }
+    }
+}
