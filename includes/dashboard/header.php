@@ -5,9 +5,17 @@
             <a href="<?php echo BASE_URL . "/" ?>">Dashboard</a>
             <?php
                 if ($currentPage != "/") {
-                    echo '<a class="breadcrumb">';
-                    // echo '<a href="'. BASE_URL . '/?page='. $currentPage . '" class="breadcrumb">';
+                    if (isset($page["parentPage"])) {
+                        echo '<a href="'. BASE_URL . '/?page='. $currentPage . '" class="breadcrumb">';
+                    } else {
+                        echo '<a class="breadcrumb">';
+                    }
                     echo $page['title'];
+                    echo '</a>';
+                }
+                if (isset($page["parentPage"])) {
+                    echo '<a class="breadcrumb">';
+                    echo $page["parentPage"];
                     echo '</a>';
                 }
             ?>
