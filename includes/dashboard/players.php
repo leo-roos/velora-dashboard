@@ -5,36 +5,34 @@
 <input class="search" type="search" name="search" id="search" placeholder="player name" required autocomplete="off">
 
 <div class="content" id="players">
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
-    <div class="item">aaaa</div>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
+    <a href="players/1" class="item">Leo (1)</a>
 </div>
 
 <script>

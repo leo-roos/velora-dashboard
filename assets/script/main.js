@@ -20,7 +20,10 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         console.log(data);
 	}
+
+    dataUpdateFunctions.forEach(func => {
+        func();
+    });
 	
-    setServerData();
     var intervalID = window.setInterval(setServerData, 500);
 })
