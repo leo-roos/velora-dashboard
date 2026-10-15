@@ -20,4 +20,15 @@
             return ".png";
         }
     }
+
+function renderCard($data)
+{
+    extract($data);
+    include __DIR__ . '/includes/components/card.php';
+}
+function renderScrollCard($data)
+{
+    extract($data);
+    include __DIR__ . '/includes/components/card-scroll.php';
+}
 ?>

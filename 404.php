@@ -1,7 +1,7 @@
 <?php
 $URL_TITLE = "Sidan hittades inte (404)";
 
-include __DIR__ . "/includes/header.php";
+include __DIR__ . "/includes/head.php";
 http_response_code(404);
 ?>
 

@@ -1,4 +1,4 @@
-<div class="stat">
+<div class="stat" id="<?php echo htmlspecialchars($id) ?>">
     <div class="top">
         <?php if($icon): ?>
             <i class="<?php echo htmlspecialchars($icon) ?>"></i>
@@ -8,6 +8,6 @@
         </div>
     </div>
     <div class="value">
-        <?php echo htmlspecialchars($value) ?>
+        <?php echo htmlspecialchars($value ?? "") ?>
     </div>
 </div>
