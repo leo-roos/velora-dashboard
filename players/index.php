@@ -170,6 +170,7 @@ addDataUpdater(function() {
                                 const text = await response.text();
                                 console.log("Response body:", text);
                                 setServerData();
+                                accountCashForm.reset();
                             })
 
                             addDataUpdater(function() {

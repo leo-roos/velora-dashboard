@@ -24,7 +24,7 @@
                     <?php
                     foreach ($inputs as $key => $value): ?>
                     <div class="input">
-                        <input value="<?php echo htmlspecialchars($value["default"]); ?>"
+                        <input placeholder="<?php echo htmlspecialchars($value["default"]); ?>"
                             type="<?php echo htmlspecialchars($value["type"]); ?>"
                             name="<?php echo htmlspecialchars($id); ?>-input"
                             id="<?php echo htmlspecialchars($id); ?>-input"
