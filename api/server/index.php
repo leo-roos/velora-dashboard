@@ -4,6 +4,7 @@ if (!$isFromServer) {
     session_start();
     if (!isset($_SESSION['discord_data'])) {
         http_response_code(401);
+        header('Content-Type: application/json; charset=utf-8');
         echo json_encode(["error" => "Unauthorized", "message" => "Du måste vara inloggad."]);
         exit();
     }

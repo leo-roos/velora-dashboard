@@ -1,0 +1,91 @@
+.dashboard .content.player {
+    gap: 10px;
+
+    .filters {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        border: 1px solid var(--border-color);
+        padding: 5px;
+        justify-content: center;
+
+        .filter {
+            cursor: pointer;
+            background-color: transparent;
+            border-radius: 5px;
+            padding: 5px 10px;
+            border: 1px solid var(--border-color);
+            transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275) .25s;
+            color: #fff;
+            &.active, &:hover {
+                background-color: var(--background-color);
+            }
+        }
+    }
+
+    & > .title {
+        border-top: 1px solid var(--border-color);
+        margin-top: 5px;
+        padding-top: 10px;
+    
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        gap: 10px;
+
+        .info {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            
+            .left {
+                .profile {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #27272A;
+                    border: 1px solid var(--border-color);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            .right {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+            }
+        }
+
+        .page {
+            display: none;
+            &.active {
+                display: flex;
+            }
+            flex-direction: column;
+
+            gap: 10px;
+        }
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+
+    @for $i from 1 through 6 {
+        &.column-#{$i} > * {
+            box-sizing: border-box;
+            width: calc(100% / #{$i});
+        }
+    }
+}
