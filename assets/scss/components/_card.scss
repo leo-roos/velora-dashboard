@@ -25,6 +25,24 @@
     }
 
     .value {
+        .bar {
+            position: relative;
+            display: block;
+            width: 100%;
+            background-color: #fff;
+            height: 5px;
+            border-radius: 10px;
+
+            .progress {
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background-color: red;
+                border-radius: 10px;
+
+                transition: width cubic-bezier(0.175, 0.885, 0.32, 1.275) .25s;
+            }
+        }
         form {
             display: flex;
             flex-direction: row;
@@ -72,11 +90,11 @@
                     border: 1px solid var(--border-color);
                     padding: 5px 10px;
                     border-radius: 5px;
-                    color: #fff;
+                    color: #ffffff93;
 
                     &.changes {
                         cursor: pointer;
-
+                        color: #fff;
                         border-color: var(--border-color-2);
                         background-color: var(--border-color);
 

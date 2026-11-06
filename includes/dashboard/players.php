@@ -64,6 +64,9 @@ function updatePlayers() {
     if (innerHTML == "") {
         innerHTML = `<div class="no-content">No players was found with the search: "${searchValue}"</div>`;
     }
+    if (serverData.players.length == 0) {
+        innerHTML = `<div class="no-content">No players are in the server</div>`;
+    }
     if (content.innerHTML != innerHTML) {
         content.innerHTML = innerHTML;
     }

@@ -106,6 +106,46 @@ addDataUpdater(function() {
                 </div>
 
                 <div class="page" id="overview">
+                    <div class="row column-1">
+                        <?php renderCard([
+                            "id" => "health-status",
+                            "title" => "Health",
+                            "icon" => "fa-light fa-heart",
+                            "progress" => ($playerData->health/$playerData->maxHealth)*100,
+                        ]) ?>
+
+                        <script>
+                            const healthStatus = document.querySelector(".stat#health-status");
+                            const healthStatusValue = healthStatus.querySelector(".value");
+                            const healthStatusText = healthStatusValue.querySelector(".text");
+                            const healthStatusBar = healthStatusValue.querySelector(".bar .progress");
+                            addDataUpdater(function() {
+                                let health = Math.round((playerData.health/playerData.maxHealth)*100);
+                                healthStatusText.textContent = `${health}%`;
+                                healthStatusBar.style.width = `${health}%`;
+                            })
+                        </script>
+                    </div>
+                    <div class="row column-1">
+                        <?php renderCard([
+                            "id" => "armour-status",
+                            "title" => "Armour",
+                            "icon" => "fa-light fa-heart",
+                            "progress" => ($playerData->health/$playerData->maxHealth)*100,
+                        ]) ?>
+
+                        <script>
+                            const armourStatus = document.querySelector(".stat#armour-status");
+                            const armourStatusValue = armourStatus.querySelector(".value");
+                            const armourStatusText = armourStatusValue.querySelector(".text");
+                            const armourStatusBar = armourStatusValue.querySelector(".bar .progress");
+                            addDataUpdater(function() {
+                                let armour = Math.round((playerData.health/playerData.maxHealth)*100);
+                                armourStatusText.textContent = `${armour}%`;
+                                armourStatusBar.style.width = `${armour}%`;
+                            })
+                        </script>
+                    </div>
                     <div class="row column-3">
                         <?php renderCard([
                             "id" => "account-cash",
@@ -116,72 +156,121 @@ addDataUpdater(function() {
                                     "title" => "",
                                     "type" => "number",
                                     "min" => 0,
-                                    "default" => $playerData->accounts->money->value
+                                    "default" => $playerData->accounts->money->value,
+                                    "data-account" => "money"
+                                ]
+                            ],
+                        ]) ?>
+                        <?php renderCard([
+                            "id" => "account-bank",
+                            "title" => "Bank",
+                            "icon" => "fa-light fa-bank",
+                            "inputs" => [
+                                [
+                                    "title" => "",
+                                    "type" => "number",
+                                    "min" => 0,
+                                    "default" => $playerData->accounts->bank->value,
+                                    "data-account" => "bank"
+                                ]
+                            ],
+                        ]) ?>
+                        <?php renderCard([
+                            "id" => "account-black_money",
+                            "title" => "Dirty Money",
+                            "icon" => "fa-light fa-wallet",
+                            "inputs" => [
+                                [
+                                    "title" => "",
+                                    "type" => "number",
+                                    "min" => 0,
+                                    "default" => $playerData->accounts->black_money->value,
+                                    "data-account" => "black_money"
                                 ]
                             ],
                         ]) ?>
                         <script>
-                            let changeDetected = false;
-                            const accountCash = document.querySelector(".stat#account-cash");
-                            const accountCashForm = accountCash.querySelector(".value form");
-                            const accountCashInputs = accountCashForm.querySelectorAll(".inputs .input input");
-                            const accountCashSave = accountCashForm.querySelector(".save button");
-
-                            function checkChange(input) {
-                                if (input.value == "") {
-                                    changeDetected = false;
-                                    input.classList.remove("changes")
-                                    accountCashSave.classList.remove("changes")
-                                    return
-                                }
-                                if (input.value != playerData.accounts.money.value) {
-                                    if (!changeDetected) {
-                                        changeDetected = true;
-                                        input.classList.add("changes")
-                                        accountCashSave.classList.add("changes")
+                            let inputs = [
+                                document.querySelector(".stat#account-cash"),
+                                document.querySelector(".stat#account-bank"),
+                                document.querySelector(".stat#account-black_money"),
+                            ];
+                            for (let index = 0; index < inputs.length; index++) {
+                                const inputEl = inputs[index];
+                                let changeDetected = false;
+                                const formEl = inputEl.querySelector(".value form");
+                                const inputsEl = formEl.querySelectorAll(".inputs .input input");
+                                const saveEl = formEl.querySelector(".save button");
+                                function checkChange(input) {
+                                    if (input.value == "") {
+                                        changeDetected = false;
+                                        input.classList.remove("changes")
+                                        saveEl.classList.remove("changes")
+                                        return
                                     }
-                                } else {
-                                    changeDetected = false;
-                                    input.classList.remove("changes")
-                                    accountCashSave.classList.remove("changes")
-                                }
-                            }
-                            accountCashInputs.forEach(input => {
-                                input.addEventListener("input", function(event) {
-                                    checkChange(input);
-                                })
-                            });
-                            accountCashForm.addEventListener("submit", async function(event) {
-                                event.preventDefault();
-                                if (!changeDetected) return;
-                                const url = new URL("http://localhost:5173/velora-dashboard/api/server/action/");
-                                const response = await fetch(url, {
-                                    method: "POST",
-                                    headers: {
-                                        "Content-Type": "application/json",
-                                    },
-                                    body: JSON.stringify({
-                                        action: "modify-account",
-                                        playerId: playerData.id,
-                                        type: "money",
-                                        value: accountCashInputs[0].value,
-                                    }),
-                                });
-                                const text = await response.text();
-                                console.log("Response body:", text);
-                                setServerData();
-                                accountCashForm.reset();
-                            })
-
-                            addDataUpdater(function() {
-                                console.log("aaaaa")
-                                accountCashInputs.forEach(input => {
+                                    let value;
                                     if (input.id == "account-cash-input") {
-                                        input.placeholder = playerData.accounts.money.value
+                                        value = playerData.accounts.money.value;
+                                    } else if (input.id == "account-bank-input") {
+                                        value = playerData.accounts.bank.value;
+                                    } else if (input.id == "account-black_money-input") {
+                                        value = playerData.accounts.black_money.value;
                                     }
-                                    checkChange(input);
+                                    if (input.value != playerData.accounts.money.value) {
+                                        if (!changeDetected) {
+                                            changeDetected = true;
+                                            input.classList.add("changes")
+                                            saveEl.classList.add("changes")
+                                        }
+                                    } else {
+                                        changeDetected = false;
+                                        input.classList.remove("changes")
+                                        saveEl.classList.remove("changes")
+                                    }
+                                }
+                                inputsEl.forEach(input => {
+                                    input.addEventListener("input", function(event) {
+                                        checkChange(input);
+                                    })
                                 });
-                            })
+                                formEl.addEventListener("submit", async function(event) {
+                                    event.preventDefault();
+                                    if (!changeDetected) return;
+                                    console.log(inputsEl[0].getAttribute("data-account"))
+                                    const url = new URL("http://localhost:5173/velora-dashboard/api/server/action/");
+                                    const response = await fetch(url, {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                        },
+                                        body: JSON.stringify({
+                                            action: "modify-account",
+                                            playerId: playerData.id,
+                                            type: inputsEl[0].getAttribute("data-account"),
+                                            value: inputsEl[0].value,
+                                        }),
+                                    });
+                                    const text = await response.text();
+                                    console.log("Response body:", text);
+                                    setServerData();
+                                    formEl.reset();
+                                })
+
+                                addDataUpdater(function() {
+                                    inputsEl.forEach(input => {
+                                        if (input.id == "account-cash-input") {
+                                            input.placeholder = playerData.accounts.money.value
+                                        }
+                                        if (input.id == "account-bank-input") {
+                                            input.placeholder = playerData.accounts.bank.value
+                                        }
+                                        if (input.id == "account-black_money-input") {
+                                            input.placeholder = playerData.accounts.black_money.value
+                                        }
+                                        checkChange(input);
+                                    });
+                                })   
+                            }
                         </script>
                         <!-- <div class="stat">
                             <div class="top">
