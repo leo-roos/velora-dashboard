@@ -300,7 +300,28 @@ body {
 }
 
 .dashboard .content.player {
+  display: flex;
+  flex-direction: row;
   gap: 10px;
+  position: relative;
+  overflow-y: hidden;
+}
+.dashboard .content.player .players {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 100%;
+}
+.dashboard .content.player .players #players {
+  max-height: none;
+}
+.dashboard .content.player .container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  max-height: 100%;
+  overflow-y: auto;
 }
 .dashboard .content.player .filters {
   display: flex;
@@ -309,6 +330,7 @@ body {
   border: 1px solid var(--border-color);
   padding: 5px;
   justify-content: center;
+  border-radius: 5px;
 }
 .dashboard .content.player .filters .filter {
   cursor: pointer;
@@ -499,7 +521,7 @@ body {
   position: relative;
   display: block;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--border-color-2);
   height: 5px;
   border-radius: 10px;
 }
@@ -518,8 +540,13 @@ body {
 }
 .stat .value form .inputs {
   display: flex;
+  flex-grow: 1;
+}
+.stat .value form .inputs .input {
+  width: 100%;
 }
 .stat .value form .inputs .input input {
+  width: 100%;
   background: transparent;
   border: 1px solid var(--border-color);
   padding: 5px 10px;
@@ -540,6 +567,17 @@ body {
 }
 .stat .value form .inputs .input input {
   transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s;
+  /* Chrome, Safari, Edge, Opera */
+}
+.stat .value form .inputs .input input::-webkit-outer-spin-button, .stat .value form .inputs .input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.stat .value form .inputs .input input {
+  /* Firefox */
+}
+.stat .value form .inputs .input input[type=number] {
+  -moz-appearance: textfield;
 }
 .stat .value form .save {
   margin-left: auto;

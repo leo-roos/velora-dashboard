@@ -1,5 +1,29 @@
 .dashboard .content.player {
+    display: flex;
+    flex-direction: row;
     gap: 10px;
+
+    position: relative;
+    overflow-y: hidden;
+
+    .players {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 100%;
+        #players {
+            max-height: none;
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex-grow: 1;
+        max-height: 100%;
+    overflow-y: auto;
+    }
 
     .filters {
         display: flex;
@@ -8,6 +32,7 @@
         border: 1px solid var(--border-color);
         padding: 5px;
         justify-content: center;
+        border-radius: 5px;
 
         .filter {
             cursor: pointer;

@@ -21,7 +21,7 @@
             <?php if(isset($progress)): ?>
                 <div class="text"><?= htmlspecialchars($progress) ?>%</div>
                 <div class="bar">
-                    <div class="progress" style="width: <?= htmlspecialchars($progress) ?>%"></div>
+                    <div class="progress" style="background-color: <?= htmlspecialchars($progress_color) ?>; width: <?= htmlspecialchars($progress) ?>%"></div>
                 </div>
             <?php endif; ?>
             <?php if(isset($inputs)): ?>
